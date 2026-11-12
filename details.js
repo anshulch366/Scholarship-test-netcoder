@@ -1,6 +1,6 @@
 // ============================================
 // Scholarship Test — Your Details page
-// Simple form validation + redirect
+// Form validation + Send OTP button + redirect
 // ============================================
 
 (function () {
@@ -16,25 +16,17 @@
     email: document.getElementById("email"),
     city: document.getElementById("city"),
     education: document.getElementById("education"),
+    course: document.getElementById("course"),
   };
 
   // Each rule returns true when the value is OK
   var rules = {
-    name: function (v) {
-      return v.trim().length >= 3 && /^[A-Za-z .'-]+$/.test(v.trim());
-    },
-    mobile: function (v) {
-      return /^[6-9]\d{9}$/.test(v);
-    },
-    email: function (v) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
-    },
-    city: function (v) {
-      return v !== "";
-    },
-    education: function (v) {
-      return v !== "";
-    },
+    name: function (v) { return v.trim().length >= 3 && /^[A-Za-z .'-]+$/.test(v.trim()); },
+    mobile: function (v) { return /^[6-9]\d{9}$/.test(v); },
+    email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
+    city: function (v) { return v !== ""; },
+    education: function (v) { return v !== ""; },
+    course: function (v) { return v !== ""; },
   };
 
   function getWrapper(key) {
@@ -47,7 +39,7 @@
     return ok;
   }
 
-  // Mobile: allow digits only
+  // Mobile: digits only
   fields.mobile.addEventListener("input", function () {
     this.value = this.value.replace(/\D/g, "").slice(0, 10);
   });
@@ -58,16 +50,14 @@
   });
 
   // Select colour: muted until something is chosen
-  ["city", "education"].forEach(function (key) {
+  ["city", "education", "course"].forEach(function (key) {
     var el = fields[key];
-    function sync() {
-      el.classList.toggle("empty", el.value === "");
-    }
+    function sync() { el.classList.toggle("empty", el.value === ""); }
     sync();
     el.addEventListener("change", sync);
   });
 
-  // Live validation: check on blur, then clear the error as soon as it is fixed
+  // Live validation
   Object.keys(fields).forEach(function (key) {
     fields[key].addEventListener("blur", function () {
       if (fields[key].value !== "" || getWrapper(key).classList.contains("invalid")) {
@@ -80,7 +70,36 @@
     });
   });
 
-  // Submit
+  // ---------- Send OTP button ----------
+  // NOTE: this only checks the number and runs a 30-second timer.
+  // To really send an SMS you need a backend / SMS service.
+  var otpBtn = document.getElementById("otpBtn");
+  if (otpBtn) {
+    otpBtn.addEventListener("click", function () {
+      if (!validateField("mobile")) {
+        fields.mobile.focus();
+        return;
+      }
+
+      // TODO: call your SMS / OTP API here, e.g. fetch("/send-otp", {...})
+
+      var left = 30;
+      otpBtn.disabled = true;
+      otpBtn.textContent = "Resend in " + left + "s";
+      var timer = setInterval(function () {
+        left -= 1;
+        if (left <= 0) {
+          clearInterval(timer);
+          otpBtn.disabled = false;
+          otpBtn.textContent = "Resend OTP";
+        } else {
+          otpBtn.textContent = "Resend in " + left + "s";
+        }
+      }, 1000);
+    });
+  }
+
+  // ---------- Submit ----------
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -104,9 +123,10 @@
       email: fields.email.value.trim(),
       city: fields.city.value,
       education: fields.education.value,
+      course: fields.course.value,
+      whatsappUpdates: document.getElementById("consent").checked,
     };
 
-    // Save so the next page can read it
     try {
       sessionStorage.setItem("scholarshipUser", JSON.stringify(data));
     } catch (err) {
@@ -116,7 +136,6 @@
     var btn = form.querySelector(".main-button");
     btn.disabled = true;
 
-    // Short delay so the button feels responsive, then go to the next step
     setTimeout(function () {
       window.location.href = NEXT_PAGE;
     }, 300);

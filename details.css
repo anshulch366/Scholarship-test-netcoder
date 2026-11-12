@@ -494,7 +494,6 @@ body {
     padding: 32px 24px 40px;
     min-height: 0;
   }
-
   .heading {
     font-size: 32px;
   }
@@ -504,35 +503,28 @@ body {
   .back-link span {
     display: none;
   }
-
   .page-title {
     font-size: 14px;
   }
-
   .stepper {
     gap: 8px;
     padding: 16px 12px;
   }
-
   .stepper-step {
     gap: 6px;
     font-size: 12px;
   }
-
   .stepper-line {
     width: 20px;
   }
-
   .hint {
     display: none;
   }
-
   .image-box {
     width: 100%;
     max-width: 320px;
     height: 300px;
   }
-
   .footer-inner {
     height: auto;
     padding-top: 28px;
@@ -540,4 +532,147 @@ body {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+
+/* =====================================================
+   NEW DESIGN — paste this at the very BOTTOM of details.css
+   (it overrides the older rules above, so nothing else
+   needs to be edited)
+   ===================================================== */
+
+/* "Step 2 of 3" label */
+.stepper-count {
+  margin-left: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8a8a99;
+}
+
+/* Left benefits panel */
+.details-card { grid-template-columns: minmax(0, 420px) minmax(0, 1fr); }
+
+.details-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border-radius: 20px;
+  background: #fff4e6;
+}
+
+.details-panel h2 {
+  font: 900 28px/1.1 "Outfit", system-ui, sans-serif;
+  color: #1e1e2e;
+}
+
+.benefits {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.benefits li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.tick {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  color: #c2410c;
+}
+
+.tick svg { width: 14px; height: 14px; }
+
+.details-panel .image-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 270px;
+  overflow: hidden;
+  box-shadow: none;
+  border-color: #ffe3c2;
+}
+
+/* Image sits in the top part; the bottom strip is kept free for the badge */
+.details-panel .image-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 44px);
+  object-fit: contain;
+}
+
+/* Send OTP button (replaces the old hint text) */
+.otp-btn {
+  flex-shrink: 0;
+  height: 34px;
+  padding: 0 14px;
+  border: 1.5px solid #1e1e2e;
+  border-radius: 999px;
+  background: transparent;
+  color: #1e1e2e;
+  font: 600 12px "Lexend", system-ui, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.otp-btn:hover:not(:disabled) {
+  background: #e8590c;
+  border-color: #e8590c;
+  color: #ffffff;
+}
+
+.otp-btn:disabled { opacity: 0.6; cursor: default; }
+
+/* City + Education in one row */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Consent checkbox */
+.consent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0 12px;
+  font-size: 13px;
+  color: #4a4a5e;
+  cursor: pointer;
+}
+
+.consent input { width: 16px; height: 16px; accent-color: #e8590c; }
+
+/* Privacy note */
+.secure-note {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #4a4a5e;
+}
+
+.secure-note svg { width: 14px; height: 14px; color: #0f766e; }
+
+@media (max-width: 960px) {
+  .details-card { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .field-row { grid-template-columns: 1fr; }
+  .stepper-count { display: none; }
 }

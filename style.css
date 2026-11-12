@@ -1,28 +1,44 @@
-/* ============================================
-   Scholarship Test page — simple version
-   Class names are plain English so the file
-   is easy to read and edit.
-   ============================================ */
 
-/* ---------- Basic setup ---------- */
+/* ============================================
+   SCHOLARSHIP TEST PAGE
+   Professional Responsive CSS
+============================================ */
+
+
+/* ---------- BASIC SETUP ---------- */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Lexend", system-ui, sans-serif;
-  color: #1e1e2e;
-  background: linear-gradient(135deg, #fdf9f0 0%, #fbf3e8 50%, #fdf6ef 100%);
-  border-top: 6px solid #3a3a44;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  font-family: "Lexend", system-ui, sans-serif;
+  color: #1e1e2e;
+
+  background: linear-gradient(
+    135deg,
+    #fdf9f0 0%,
+    #fbf3e8 50%,
+    #fdf6ef 100%
+  );
+
+  border-top: 6px solid #3a3a44;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Reusable centered container */
+
+/* ---------- REUSABLE CONTAINER ---------- */
+
 .container {
   width: 100%;
   max-width: 1262px;
@@ -30,41 +46,47 @@ body {
   padding: 0 24px;
 }
 
-/* ---------- Top navbar ---------- */
+
+/* ============================================
+   NAVBAR
+============================================ */
+
 .nav {
+  width: 100%;
   background: #ffffff;
   border-bottom: 1px solid #f0e6d8;
+  flex-shrink: 0;
 }
 
 .nav-inner {
-  height: 66px;
+  min-height: 66px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  gap: 20px;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
   gap: 18px;
+  min-width: 0;
 }
 
-/* Empty box where your logo will go */
 .logo-box {
   width: 90px;
   height: 52px;
   display: block;
+  flex-shrink: 0;
 }
 
 .logo-box img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.main-button {
-  text-decoration: none;
-  /* baaki jo pehle se likha hai wahi rehne do */
+  display: block;
 }
 
 .logo-box.small {
@@ -76,21 +98,25 @@ body {
   width: 1px;
   height: 22px;
   background: #e8e8ee;
+  flex-shrink: 0;
 }
 
 .page-title {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 600;
+
   font-size: 16px;
+  font-weight: 600;
   color: #1e1e2e;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .page-title svg {
   width: 24px;
   height: 24px;
+  flex-shrink: 0;
 }
 
 .nav-right {
@@ -103,11 +129,13 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+
   font-size: 14px;
   font-weight: 500;
   color: #4a4a5e;
   text-decoration: none;
-  transition: color 0.2s;
+
+  transition: color 0.2s ease;
 }
 
 .back-link:hover {
@@ -117,28 +145,36 @@ body {
 .back-link svg {
   width: 14px;
   height: 14px;
+  flex-shrink: 0;
 }
 
 .login-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
+
   height: 40px;
   padding: 0 16px;
+
   border: 1px solid #1e1e2e;
   border-radius: 999px;
+
   background: transparent;
   color: #1e1e2e;
+
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .login-btn:hover {
   background: #e8590c;
   color: #ffffff;
-  border: none;
+  border-color: #e8590c;
 }
 
 .login-btn svg {
@@ -146,48 +182,97 @@ body {
   height: 15px;
 }
 
-/* ---------- Hero section ---------- */
+
+/* ============================================
+   HERO SECTION
+============================================ */
+
 .hero-section {
   flex: 1;
-  padding: 41px 0 145px;
+  width: 100%;
+
+  padding: 38px 0 45px;
+
   background-color: #fdf6ef;
+
   background-image:
-    linear-gradient(rgba(232, 89, 12, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(232, 89, 12, 0.07) 1px, transparent 1px),
-    linear-gradient(135deg, #fdf9f0 0%, #fbf3e8 50%, #fdf6ef 100%);
-  background-size: 38px 38px, 38px 38px, 100% 100%;
+    linear-gradient(
+      rgba(232, 89, 12, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(232, 89, 12, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      135deg,
+      #fdf9f0 0%,
+      #fbf3e8 50%,
+      #fdf6ef 100%
+    );
+
+  background-size:
+    38px 38px,
+    38px 38px,
+    100% 100%;
 }
 
-/* The big white card in the middle */
+.hero-section > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+/* ============================================
+   HERO CARD
+============================================ */
+
 .hero-card {
+  width: 100%;
+
   background: #ffffff;
-  border-radius: 26px;
   border: 1px solid #f0e6d8;
-  box-shadow: 0 20px 50px -20px rgba(230, 150, 60, 0.25),
+  border-radius: 26px;
+
+  box-shadow:
+    0 20px 50px -20px rgba(230, 150, 60, 0.25),
     0 2px 6px rgba(230, 150, 60, 0.06);
-  padding: 41px 40px 90px;
+
+  padding: 38px 36px 42px;
+
   display: grid;
-  grid-template-columns: minmax(0, 648px) 1fr;
-  gap: 40px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+
+  gap: 35px;
+  align-items: center;
 }
 
-/* Left column */
+
+/* ---------- LEFT COLUMN ---------- */
+
 .container1 {
   min-width: 0;
 }
 
-/* Small orange pill at the top */
+
+/* Badge */
+
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 26px;
-  padding: 0 14px;
+
+  min-height: 26px;
+  padding: 4px 14px;
+
   border: 1px solid #ffd8a8;
   border-radius: 999px;
+
   background: #fff4e6;
   color: #e8590c;
+
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -197,16 +282,21 @@ body {
 .badge svg {
   width: 12px;
   height: 12px;
+  flex-shrink: 0;
 }
 
-/* Big heading */
+
+/* Heading */
+
 .heading {
   margin-top: 18px;
+
   font-family: "Outfit", system-ui, sans-serif;
   font-weight: 900;
   font-size: 53px;
   line-height: 1;
   letter-spacing: -0.03em;
+
   color: #1e1e2e;
 }
 
@@ -216,24 +306,30 @@ body {
   color: #e8590c;
 }
 
-/* Small orange underline below "Scholarship Test" */
 .heading-orange::after {
   content: "";
+
   position: absolute;
   left: 0;
   bottom: -4px;
+
   width: 96px;
   height: 5px;
+
   border-radius: 3px;
   background: #e8590c;
 }
 
-/* Paragraph under the heading */
+
+/* Description */
+
 .subtext {
   margin-top: 22px;
   max-width: 490px;
+
   font-size: 18px;
   line-height: 1.56;
+
   color: #4a4a5e;
 }
 
@@ -242,9 +338,14 @@ body {
   font-weight: 600;
 }
 
-/* Button + small note row */
+
+/* ============================================
+   BUTTON
+============================================ */
+
 .button-row {
-  margin-top: 33px;
+  margin-top: 30px;
+
   display: flex;
   align-items: center;
   gap: 16px;
@@ -254,180 +355,665 @@ body {
 .main-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  height: 56px;
+
+  min-height: 56px;
   padding: 0 32px;
+
   border: 0;
   border-radius: 999px;
+
   background: #e8590c;
   color: #ffffff;
+
   font-family: "Lexend", system-ui, sans-serif;
   font-size: 16px;
   font-weight: 700;
+
+  text-decoration: none;
   cursor: pointer;
+
   box-shadow: 0 12px 24px -8px rgba(232, 89, 12, 0.5);
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .main-button:hover {
   transform: translateY(-2px);
   background: #d9480f;
+
   box-shadow: 0 16px 30px -8px rgba(232, 89, 12, 0.6);
 }
 
 .main-button svg {
   width: 18px;
   height: 18px;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
 .main-button:hover svg {
   transform: translateX(3px);
 }
 
+
+/* Small Note */
+
 .small-note {
+  display: block;
+  margin-top: 14px;
+
   font-size: 12px;
   color: #8a8a99;
 }
 
-/* Thin divider line */
-.line {
-  margin: 40px 0 24px;
-  height: 1px;
-  background: #e8e8ee;
-  border: 0;
-}
 
-/* 3 steps row */
-.steps {
+/* ============================================
+   TRUST SECTION
+============================================ */
+
+.trust {
+  margin-top: 26px;
+  padding-top: 20px;
+
+  border-top: 1px solid #f0e6d8;
+
   display: flex;
   align-items: center;
+  gap: 25px;
   flex-wrap: wrap;
-  gap: 18px;
+
+  font-size: 13px;
+  color: #4a4a5e;
 }
 
-.step {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 600;
+.trust strong {
   color: #1e1e2e;
+  font-weight: 700;
 }
 
-.step-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: #e8590c;
-  color: #ffffff;
-  box-shadow: 0 6px 12px -4px rgba(232, 89, 12, 0.45);
-}
 
-.step-icon svg {
-  width: 14px;
-  height: 14px;
-}
+/* ============================================
+   STUDENT IMAGE
+============================================ */
 
-.step-arrow {
-  color: #8a8a99;
-  display: flex;
-}
-
-.step-arrow svg {
-  width: 14px;
-  height: 14px;
-}
-
-/* Right column: girl image */
 .container2 {
+  min-width: 0;
+
   display: flex;
   justify-content: center;
-  padding-top: 43px;
+  align-items: center;
+}
+
+.image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 348px;
 }
 
 .image-box {
-  width: 348px;
-  height: 348px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
   border-radius: 22px;
+
   background: #ffffff;
   border: 1px solid #e8e8ee;
+
   box-shadow: 0 25px 50px -18px rgba(60, 60, 90, 0.2);
+
   overflow: hidden;
-  display: grid;
-  place-items: center;
 }
 
 .image-box img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
 }
 
-/* ---------- Footer ---------- */
+
+/* Offer Badge */
+
+.offer-chip {
+  position: absolute;
+  right: -12px;
+  bottom: -14px;
+
+  padding: 12px 18px;
+
+  border-radius: 16px;
+
+  background: #e8590c;
+  color: #ffffff;
+
+  font: 900 22px/1 "Outfit", system-ui, sans-serif;
+
+  box-shadow: 0 12px 24px -8px rgba(232, 89, 12, 0.5);
+
+  white-space: nowrap;
+}
+
+
+/* ============================================
+   HOW IT WORKS
+============================================ */
+
+.info-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #f0e6d8;
+  border-radius: 22px;
+
+  box-shadow: 0 20px 50px -22px rgba(230, 150, 60, 0.28);
+
+  padding: 28px 30px;
+}
+
+.info-card h2 {
+  margin-bottom: 16px;
+
+  font: 800 24px "Outfit", system-ui, sans-serif;
+  color: #1e1e2e;
+}
+
+
+/* Cards Grid */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.how-card {
+  min-width: 0;
+
+  border: 1px solid #f0e6d8;
+  border-radius: 16px;
+
+  padding: 18px;
+}
+
+.how-card .num {
+  font: 900 28px "Outfit", system-ui, sans-serif;
+  color: #e8590c;
+}
+
+.how-card h3 {
+  margin: 6px 0 2px;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.how-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4a4a5e;
+}
+
+
+/* ============================================
+   FOOTER — FULL WIDTH
+============================================ */
+
 .footer {
+  width: 100%;
+
+  min-height: 112px;
+
   background: #14141f;
   color: #b8b8c8;
+
+  margin-top: auto;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-inner {
-  height: 112px;
+  width: 100%;
+  max-width: 1262px;
+
+  min-height: 112px;
+
+  margin: 0 auto;
+  padding: 20px 24px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+
+  gap: 24px;
+
   font-size: 12px;
 }
+
+
+/* Footer Left */
 
 .footer-left {
   display: flex;
   align-items: center;
   gap: 18px;
+
+  min-width: 0;
 }
 
-/* ---------- Mobile / small screens ---------- */
+.footer-left .logo-box {
+  width: 80px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.footer-description {
+  white-space: nowrap;
+}
+
+
+/* Copyright */
+
+.copyright {
+  text-align: right;
+  line-height: 1.6;
+}
+
+
+/* ============================================
+   TABLET RESPONSIVE
+============================================ */
+
 @media (max-width: 960px) {
+
   .hero-card {
     grid-template-columns: 1fr;
-    padding: 32px 24px 48px;
+    gap: 35px;
+
+    padding: 32px 28px 40px;
   }
+
   .container2 {
-    padding-top: 0;
     order: -1;
   }
-  .heading {
-    font-size: 42px;
+
+  .image-wrap {
+    max-width: 320px;
   }
+
+  .heading {
+    font-size: 46px;
+  }
+
+  .subtext {
+    max-width: 100%;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .how-card:last-child {
+    grid-column: 1 / -1;
+  }
+
 }
 
-@media (max-width: 600px) {
-  .back-link span {
-    display: none;
+
+/* ============================================
+   SMALL TABLET
+============================================ */
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 0 18px;
   }
+
+  .nav-inner {
+    min-height: 62px;
+  }
+
+  .nav-left {
+    gap: 12px;
+  }
+
+  .nav-right {
+    gap: 12px;
+  }
+
+  .back-link {
+    font-size: 12px;
+  }
+
   .page-title {
     font-size: 14px;
   }
+
   .heading {
-    font-size: 36px;
+    font-size: 42px;
   }
-  .subtext {
-    font-size: 16px;
+
+  .hero-section {
+    padding: 28px 0 35px;
   }
-  .image-box {
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-  }
+
   .footer-inner {
-    height: auto;
-    padding-top: 28px;
-    padding-bottom: 28px;
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 22px 20px;
   }
-  .step-arrow {
+
+}
+
+
+/* ============================================
+   MOBILE RESPONSIVE
+============================================ */
+
+@media (max-width: 600px) {
+
+  .container {
+    padding: 0 14px;
+  }
+
+  /* Navbar */
+
+  .nav-inner {
+    min-height: 60px;
+    gap: 8px;
+  }
+
+  .nav-left {
+    gap: 9px;
+  }
+
+  .logo-box {
+    width: 70px;
+    height: 42px;
+  }
+
+  .divider {
+    height: 20px;
+  }
+
+  .page-title {
+    gap: 5px;
+    font-size: 12px;
+  }
+
+  .page-title svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .nav-right {
+    gap: 8px;
+  }
+
+  .back-link {
     display: none;
   }
+
+  .login-btn {
+    height: 35px;
+    padding: 0 11px;
+    font-size: 12px;
+  }
+
+
+  /* Hero */
+
+  .hero-section {
+    padding: 22px 0 30px;
+  }
+
+  .hero-section > .container {
+    gap: 18px;
+  }
+
+  .hero-card {
+    padding: 25px 20px 32px;
+    gap: 30px;
+    border-radius: 20px;
+  }
+
+  .badge {
+    font-size: 9px;
+    padding: 5px 10px;
+    height: auto;
+  }
+
+  .heading {
+    font-size: clamp(30px, 7vw, 40px);
+    line-height: 1.08;
+    margin-top: 17px;
+  }
+
+  .heading-orange::after {
+    width: 75px;
+    height: 4px;
+  }
+
+  .subtext {
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .button-row {
+    margin-top: 24px;
+  }
+
+  .main-button {
+    min-height: 49px;
+    padding: 0 25px;
+    font-size: 14px;
+  }
+
+  .small-note {
+    font-size: 11px;
+  }
+
+  .trust {
+    gap: 12px 18px;
+    margin-top: 22px;
+    padding-top: 18px;
+    font-size: 11px;
+  }
+
+
+  /* Image */
+
+  .image-wrap {
+    max-width: 290px;
+  }
+
+  .image-box {
+    border-radius: 17px;
+  }
+
+  .offer-chip {
+    right: -5px;
+    bottom: -10px;
+
+    padding: 10px 13px;
+    font-size: 17px;
+    border-radius: 12px;
+  }
+
+
+  /* How it works */
+
+  .info-card {
+    padding: 23px 18px;
+    border-radius: 18px;
+  }
+
+  .info-card h2 {
+    font-size: 22px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .how-card:last-child {
+    grid-column: auto;
+  }
+
+  .how-card {
+    padding: 16px;
+  }
+
+
+  /* Footer */
+
+  .footer-inner {
+    min-height: 112px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    gap: 12px;
+
+    padding: 22px 14px;
+  }
+
+  .footer-left {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-left .logo-box {
+    width: 70px;
+    height: 26px;
+  }
+
+  .footer-description {
+    font-size: 10px;
+    white-space: normal;
+  }
+
+  .copyright {
+    font-size: 10px;
+    text-align: center;
+  }
+
+}
+
+
+/* ============================================
+   EXTRA SMALL MOBILE — 320px
+============================================ */
+
+@media (max-width: 380px) {
+
+  .container {
+    padding: 0 10px;
+  }
+
+  .nav-inner {
+    gap: 5px;
+  }
+
+  .nav-left {
+    gap: 7px;
+  }
+
+  .logo-box {
+    width: 62px;
+  }
+
+  .page-title {
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .page-title svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .login-btn {
+    padding: 0 9px;
+    font-size: 11px;
+    gap: 5px;
+  }
+
+  .hero-card {
+    padding: 22px 15px 28px;
+    gap: 27px;
+  }
+
+  .badge {
+    font-size: 8px;
+    letter-spacing: 0;
+    gap: 5px;
+    padding: 5px 8px;
+  }
+
+  .heading {
+    font-size: 29px;
+  }
+
+  .subtext {
+    font-size: 14px;
+  }
+
+  .trust {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .image-wrap {
+    max-width: 250px;
+  }
+
+  .offer-chip {
+    font-size: 15px;
+    padding: 9px 11px;
+  }
+
+  .info-card {
+    padding: 20px 14px;
+  }
+
+  .info-card h2 {
+    font-size: 20px;
+  }
+
+  .how-card {
+    padding: 14px;
+  }
+
+  .footer-inner {
+    padding: 20px 10px;
+  }
+
+  .footer-left {
+    gap: 7px;
+  }
+
+  .footer-description {
+    font-size: 9px;
+  }
+
+  .copyright {
+    font-size: 9px;
+  }
+
 }
