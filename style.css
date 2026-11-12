@@ -1,0 +1,433 @@
+/* ============================================
+   Scholarship Test page — simple version
+   Class names are plain English so the file
+   is easy to read and edit.
+   ============================================ */
+
+/* ---------- Basic setup ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lexend", system-ui, sans-serif;
+  color: #1e1e2e;
+  background: linear-gradient(135deg, #fdf9f0 0%, #fbf3e8 50%, #fdf6ef 100%);
+  border-top: 6px solid #3a3a44;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reusable centered container */
+.container {
+  width: 100%;
+  max-width: 1262px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Top navbar ---------- */
+.nav {
+  background: #ffffff;
+  border-bottom: 1px solid #f0e6d8;
+}
+
+.nav-inner {
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Empty box where your logo will go */
+.logo-box {
+  width: 90px;
+  height: 52px;
+  display: block;
+}
+
+.logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.main-button {
+  text-decoration: none;
+  /* baaki jo pehle se likha hai wahi rehne do */
+}
+
+.logo-box.small {
+  width: 80px;
+  height: 30px;
+}
+
+.divider {
+  width: 1px;
+  height: 22px;
+  background: #e8e8ee;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1e1e2e;
+  text-decoration: none;
+}
+
+.page-title svg {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a4a5e;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #e8590c;
+}
+
+.back-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.login-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #1e1e2e;
+  border-radius: 999px;
+  background: transparent;
+  color: #1e1e2e;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.login-btn:hover {
+  background: #e8590c;
+  color: #ffffff;
+  border: none;
+}
+
+.login-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ---------- Hero section ---------- */
+.hero-section {
+  flex: 1;
+  padding: 41px 0 145px;
+  background-color: #fdf6ef;
+  background-image:
+    linear-gradient(rgba(232, 89, 12, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 89, 12, 0.07) 1px, transparent 1px),
+    linear-gradient(135deg, #fdf9f0 0%, #fbf3e8 50%, #fdf6ef 100%);
+  background-size: 38px 38px, 38px 38px, 100% 100%;
+}
+
+/* The big white card in the middle */
+.hero-card {
+  background: #ffffff;
+  border-radius: 26px;
+  border: 1px solid #f0e6d8;
+  box-shadow: 0 20px 50px -20px rgba(230, 150, 60, 0.25),
+    0 2px 6px rgba(230, 150, 60, 0.06);
+  padding: 41px 40px 90px;
+  display: grid;
+  grid-template-columns: minmax(0, 648px) 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Left column */
+.container1 {
+  min-width: 0;
+}
+
+/* Small orange pill at the top */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 26px;
+  padding: 0 14px;
+  border: 1px solid #ffd8a8;
+  border-radius: 999px;
+  background: #fff4e6;
+  color: #e8590c;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Big heading */
+.heading {
+  margin-top: 18px;
+  font-family: "Outfit", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 53px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #1e1e2e;
+}
+
+.heading-orange {
+  position: relative;
+  display: inline-block;
+  color: #e8590c;
+}
+
+/* Small orange underline below "Scholarship Test" */
+.heading-orange::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 96px;
+  height: 5px;
+  border-radius: 3px;
+  background: #e8590c;
+}
+
+/* Paragraph under the heading */
+.subtext {
+  margin-top: 22px;
+  max-width: 490px;
+  font-size: 18px;
+  line-height: 1.56;
+  color: #4a4a5e;
+}
+
+.subtext strong {
+  color: #1e1e2e;
+  font-weight: 600;
+}
+
+/* Button + small note row */
+.button-row {
+  margin-top: 33px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.main-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 32px;
+  border: 0;
+  border-radius: 999px;
+  background: #e8590c;
+  color: #ffffff;
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 24px -8px rgba(232, 89, 12, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.main-button:hover {
+  transform: translateY(-2px);
+  background: #d9480f;
+  box-shadow: 0 16px 30px -8px rgba(232, 89, 12, 0.6);
+}
+
+.main-button svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s;
+}
+
+.main-button:hover svg {
+  transform: translateX(3px);
+}
+
+.small-note {
+  font-size: 12px;
+  color: #8a8a99;
+}
+
+/* Thin divider line */
+.line {
+  margin: 40px 0 24px;
+  height: 1px;
+  background: #e8e8ee;
+  border: 0;
+}
+
+/* 3 steps row */
+.steps {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e1e2e;
+}
+
+.step-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e8590c;
+  color: #ffffff;
+  box-shadow: 0 6px 12px -4px rgba(232, 89, 12, 0.45);
+}
+
+.step-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.step-arrow {
+  color: #8a8a99;
+  display: flex;
+}
+
+.step-arrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Right column: girl image */
+.container2 {
+  display: flex;
+  justify-content: center;
+  padding-top: 43px;
+}
+
+.image-box {
+  width: 348px;
+  height: 348px;
+  border-radius: 22px;
+  background: #ffffff;
+  border: 1px solid #e8e8ee;
+  box-shadow: 0 25px 50px -18px rgba(60, 60, 90, 0.2);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: #14141f;
+  color: #b8b8c8;
+}
+
+.footer-inner {
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ---------- Mobile / small screens ---------- */
+@media (max-width: 960px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+    padding: 32px 24px 48px;
+  }
+  .container2 {
+    padding-top: 0;
+    order: -1;
+  }
+  .heading {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 600px) {
+  .back-link span {
+    display: none;
+  }
+  .page-title {
+    font-size: 14px;
+  }
+  .heading {
+    font-size: 36px;
+  }
+  .subtext {
+    font-size: 16px;
+  }
+  .image-box {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+  }
+  .footer-inner {
+    height: auto;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .step-arrow {
+    display: none;
+  }
+}
